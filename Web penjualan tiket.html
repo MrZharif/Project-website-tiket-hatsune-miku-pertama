@@ -1,0 +1,181 @@
+<html>
+<head>
+    <title>Penjualan Tiket Konser</title>
+    <style>
+    body {
+        background-color: #add8e6;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        color: white;
+        margin-top: 50px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px auto;
+        max-width: 400px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    li:last-child {
+        border-bottom: none;
+    }
+    
+    .ticket-container {
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .select-ticket-btn {
+        background-color: white;
+        color: black;
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Aturan CSS untuk #tombolCheckout yang dipindahkan dan diperbaiki */
+    #tombolCheckout {
+        margin-top: 20px;
+    }
+	
+	  #tombolCheckout {
+            display: block; /* Mengubah tombol menjadi elemen blok */
+            margin: 20px auto 0; /* Memusatkannya secara horizontal */
+        }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: white;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        min-width: 250px;
+        border-radius: 5px;
+        margin-top: 5px;
+        left: 50%; /* Menyesuaikan posisi agar terpusat di bawah tombol Pilih Tiket */
+        transform: translateX(-50%); /* Menyesuaikan posisi agar terpusat */
+    }
+
+    .dropdown-menu a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .selected-ticket-bar {
+        background-color: #f0f8ff;
+        border: 2px solid #add8e6;
+        padding: 15px;
+        margin-top: 40px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+    <h1>Selamat datang di penjualan tiket konser hatsune miku</h1>
+<hr size=10 color=white width=100% align=left>
+    <ul>
+        <li>Tiket Festival: Rp 500.000</li>
+        <li>Tiket Reguler: Rp 750.000</li>
+        <li>Tiket VIP: Rp 1.500.000</li>
+        <li>Tiket VVIP (Terbatas): Rp 2.500.000</li>
+    </ul>
+<p style="background-color: white; padding: 20px; border-radius: 10px;">
+  Untuk <i>ketersediaan</i> tiket bisa di cek secara berkala ya :)<br>
+  Konser <strong>Hatsune Miku</strong> tahun ini akan menjadi pengalaman tak terlupakan. apalagi ini di indonesia coy!! 
+  Pastikan Anda mendapatkan tiket sebelum kehabisan! <sup>stok sangat terbatas</sup>
+</p>
+        <div class="ticket-container">
+    <button class="select-ticket-btn">Pilih Tiket</button>
+    <div class="dropdown-menu">
+        <a href="#" class="ticket-option" data-ticket="Festival">Tiket Festival: Rp 500.000</a>
+        <a href="#" class="ticket-option" data-ticket="Reguler">Tiket Reguler: Rp 750.000</a>
+        <a href="#" class="ticket-option" data-ticket="VIP">Tiket VIP: Rp 1.500.000</a>
+        <a href="#" class="ticket-option" data-ticket="VVIP">Tiket VVIP: Rp 2.500.000</a>
+    </div>
+</div>
+
+<div class="selected-ticket-bar">
+    <span id="selected-ticket-text">Pilih tiket Anda di atas</span>
+</div>
+    
+<button id="tombolCheckout" class="select-ticket-btn" style="display:none;">Check Out</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectButton = document.querySelector('.select-ticket-btn');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const ticketOptions = document.querySelectorAll('.ticket-option');
+        const selectedTicketText = document.getElementById('selected-ticket-text');
+        const tombolCheckout = document.getElementById('tombolCheckout');
+        
+        selectButton.addEventListener('click', function() {
+            dropdownMenu.classList.toggle('show');
+        });
+        
+     ticketOptions.forEach(option => {
+            option.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                const ticketName = this.textContent;
+                selectedTicketText.textContent = `Anda telah memilih: ${ticketName}`;
+                dropdownMenu.classList.remove('show');
+				tombolCheckout.style.display = 'block';
+            });
+        });
+        
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.ticket-container')) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
+</script>
+
+    </style>
+</head>
+</body>
+
+    <h1>BARANG YANG DI <strike>LARANG</strike> DI BAWA KE <u>KONSER</u>!!</h1>
+
+    <ul>
+        <li>Benda tajam</li>
+        <li>Senjata api</li>
+        <li>Mainan dewasa</li>
+        <li>Makanan</li>
+    </ul>
+            <img src="https://mikuexpo.com/10th/images/illust/mikuexpo_mainVisual.png
+            " width="350px">
+				<p style="
+    text-align: right; 
+    font-size: 0.8em;
+    color: #555;
+    margin-top: 50px;
+">
+    &copy crypton media technology x Zharif.co
+</p>
+</html>
